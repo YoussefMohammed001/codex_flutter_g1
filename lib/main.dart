@@ -1,114 +1,189 @@
-import 'package:flutter/material.dart';
-
 void main() {
 
-  runApp(const MyApp());
+// String  fullName = "Mohamed Ahmed";
+// print("Full name: $fullName");
+// double price = 12.99;
+// print("price: $price \$");
+
+
+
+
+// List<String> names = ['Alice', 'Bob', 'Charlie'];
+// List<double> prices = [9.99, 19.99, 29.99];
+// List<bool> isAvailable = [true, false, true];
+//  List<int> numbers = [1, 2,3,4,5];
+//  print(numbers);
+// print(numbers.length);
+// print(numbers[0]);
+// print(numbers.reversed.toList());
+// print(numbers.last);
+// print(numbers.first);
+// print(numbers.isNotEmpty);
+// numbers.add(6);
+// print(numbers);
+// numbers.remove(3);
+// print(numbers);
+// numbers.insert(0,0);
+// print(numbers);
+// numbers.removeAt(0);
+// print(numbers);
+// numbers.removeLast();
+// print(numbers);
+// print(numbers.contains(20));
+// numbers.clear();
+// print(numbers);
+//
+// Map usersInfo = {
+// "userName": "Mohamed",
+//   "age" :20,
+//   "phoneNumber": "01211829505",
+//   "isVerified": true,
+//   "balance": 200.20,
+// };
+// print(usersInfo['balance']);
+
+
+
+// String firstNumber = "5";
+// String secondNumber = "10";
+//
+// print(firstNumber + secondNumber);  // => 510
+//
+// print(int.parse(firstNumber) + int.parse(secondNumber)); // => 15
+//
+//   int  day = 30;
+//   int month = 12;
+//   print(day.toString() + month.toString());
+
+
+
+// int firstNumber = 10;
+// int secondNumber = 3;
+// int sum = firstNumber + secondNumber;
+// print("$firstNumber + $secondNumber = $sum");
+// int sub = firstNumber - secondNumber;
+// print("$firstNumber - $secondNumber = $sub");
+// int multi = firstNumber * secondNumber;
+// print("$firstNumber * $secondNumber = $multi");
+// double div = firstNumber / secondNumber;
+// print("$firstNumber / $secondNumber = $div");
+// print(firstNumber % secondNumber);
+// print(firstNumber == secondNumber);
+  // print(firstNumber != secondNumber);
+  // print( firstNumber > secondNumber);
+  // print( firstNumber < secondNumber);
+  // print( firstNumber <= secondNumber);
+  // print(firstNumber >= secondNumber);
+  // // logical operators &&, ||, !
+  // bool isVerified = false;
+  // bool isActive = false;
+  // // !
+  // print(!isVerified);
+  // // &&
+  // print( isActive && isVerified);
+  // // ||
+  // print(!isActive || isVerified);
+// double firstNumber = 10;
+//
+// firstNumber += 5;
+// print(firstNumber);
+//
+// firstNumber -= 5;
+// print(firstNumber);
+//
+// firstNumber *= 5;
+// print(firstNumber);
+//
+// firstNumber /= 5;
+// print(firstNumber);
+
+int mark = 2000;
+// if(condition){
+//   some code
+// }
+// if(mark >50){
+//   print("pass");
+// } else{
+//   print("fail");
+// }
+//   int quizOne = 3;
+//   int quizTwo = 8;
+// if(quizOne > 5 || quizTwo > 5){
+//   print("pass");
+// }else{
+//   print("fail");
+// }
+//
+// if(!(quizOne > 5 || quizTwo > 5)){
+//   print("pass");
+// }else{
+//     print("fail");
+// }
+
+// int  marks = 20;
+// if(marks>= 85){
+//   print ("A");
+// }else if(marks >= 70){
+//   print("B");
+// } else if(marks >= 60){
+//   print("C");
+// }else if(marks >= 50){
+//   print("D");
+// } else{
+//   print("F");
+// }
+
+//
+// String day = "Friday";
+//
+// print(day == "Friday" ? "happy weekend" : "not happy weekend");
+//
+//   if(day == "Friday"){
+//    print("happy weekend");
+//   }else{
+//     print("not happy weekend");
+//   }
+
+
+
+// switch(day){
+//   case "Saturday":
+//     print("Today is Saturday");
+//     break;
+//   case "Sunday":
+//     print("Today is Sunday");
+//     break;
+//   case "Monday":
+//     print("Today is Monday");
+// }
+
+List<String> programmingLang = ["Dart", "Java", "Python","kotlin"];
+
+// for(int progLang = 0; progLang <  programmingLang.length;progLang++){
+//   print(programmingLang[progLang]);
+// }
+
+// for(String progLang in programmingLang){
+//   print(progLang);
+// }
+//
+ int count =5;
+// while(count < 10){
+//   count++;
+//   print(count);
+// }
+
+do{
+  print(count);
+  count++;
+} while(count <= 10);
+
+
+
+
+
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
 
 
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
-  }
-}

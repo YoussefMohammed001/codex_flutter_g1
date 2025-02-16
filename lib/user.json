@@ -1,0 +1,23 @@
+[
+  {
+    "userName": "Mohamed",
+    "age": 20,
+    "phoneNumber": "01211829505",
+    "isVerified": true,
+    "balance": 200.20
+  },
+  {
+    "userName": "Mohamed",
+    "age": 20,
+    "phoneNumber": "01211829505",
+    "isVerified": true,
+    "balance": 200.20
+  },
+  {
+  "userName": "Mohamed",
+  "age": 20,
+  "phoneNumber": "01211829505",
+  "isVerified": true,
+  "balance": 200.20
+}
+]
