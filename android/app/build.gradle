@@ -8,7 +8,6 @@ plugins {
 android {
     namespace = "com.codex.fluttercourse.codex_flutter_g1"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
