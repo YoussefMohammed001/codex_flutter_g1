@@ -1,3 +1,4 @@
+import 'package:codex_flutter_g1/bmi_calc/bmi_calculator_screen.dart';
 import 'package:codex_flutter_g1/home_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
       ),
-      home: HomeScreen(),
+      home: BmiCalculatorScreen(),
     );
   }
 }

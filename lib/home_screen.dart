@@ -16,69 +16,58 @@ int counter = 0;
     // Column => vertical list of widgets
     // Row => horizontal list of widgets
     return Scaffold(
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          FloatingActionButton(
-            child: Icon(Icons.remove),
-            onPressed: () {
-              print("pressed");
-              counter--;
-              setState(() {
-              });
-            },
-          ),
-          SizedBox(
-          width:30,
-          ),
-          FloatingActionButton(
-            child: Icon(Icons.add),
-            onPressed: () {
-              print("pressed");
-              setState(() {
-                counter++;
-              });
-            },
-          ),
-          SizedBox(
-            width:30,
-          ),
-          FloatingActionButton(
-            child: Icon(Icons.restart_alt),
-            onPressed: () {
-              print("pressed");
-              counter++;
-              setState(() {
-
-              });
-            },
-          ),
-        ],
-      ),
-
       appBar: AppBar(
         backgroundColor: Colors.green,
-        title: Text("Home Screen",
+        title: Text("Expanded Containers",
         style:TextStyle(
           color: Colors.white,
           fontWeight: FontWeight.w700
         ) ,)),
       body: Center(
         child: Column(
-          mainAxisAlignment:MainAxisAlignment.center,
                 children: [
-        Text("Home Screen",
-        style: TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.w600,
-        ),
-        ),
-        Text(counter.toString()),
+              Expanded(
+                child: Row(
+                  children: [
+                    containerItem(text: "1",color: Colors.red,),
+                    containerItem(text: "2",color: Colors.yellow,),
+                    containerItem(text: "3",color: Colors.yellow,),
+                  ],
+                ),
+              ),
+
+                  Expanded(
+                    child: Row(
+                      children: [
+                        containerItem(text: "4",color: Colors.green,),
+                        containerItem(text: "5",color: Colors.blue,),
+                      ],
+                    ),
+                  ),
                 ],
               ),
       ),
     );
   }
+  Widget containerItem({required String text,required Color color}) {
+    return   Expanded(
+      child: Container(
+          alignment: Alignment.center,
+          padding: EdgeInsets.all(20),
+          margin: EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            color: color,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Text(text)),
+    );
+  }
+
+
+
+
+
+
 }
 
 
