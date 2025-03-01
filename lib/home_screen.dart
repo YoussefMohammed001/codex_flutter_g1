@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
-   HomeScreen({super.key});
+ const  HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -25,7 +25,6 @@ int counter = 0;
               print("pressed");
               counter--;
               setState(() {
-
               });
             },
           ),
@@ -36,9 +35,8 @@ int counter = 0;
             child: Icon(Icons.add),
             onPressed: () {
               print("pressed");
-              counter++;
               setState(() {
-
+                counter++;
               });
             },
           ),
@@ -57,6 +55,7 @@ int counter = 0;
           ),
         ],
       ),
+
       appBar: AppBar(
         backgroundColor: Colors.green,
         title: Text("Home Screen",
@@ -74,12 +73,11 @@ int counter = 0;
           fontWeight: FontWeight.w600,
         ),
         ),
-               Text(counter.toString()),
-
-
+        Text(counter.toString()),
                 ],
               ),
       ),
     );
   }
 }
+
