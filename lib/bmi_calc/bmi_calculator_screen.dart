@@ -18,15 +18,10 @@ int weight = 70;
 int age = 23;
 
 
-
-
-
-
-
   @override
 Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:background ,
+      backgroundColor:background,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         title: Text("BMI Calculator",style: TextStyle(color: Colors.white),),
@@ -65,7 +60,6 @@ Widget build(BuildContext context) {
       ),
     );
   }
-
 
 
 Widget genderItem({required String text,required IconData icon,required GestureTapCallback onTap,required Color color}) {
