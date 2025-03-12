@@ -4,11 +4,11 @@ class HomeScreen extends StatelessWidget {
    HomeScreen({super.key});
 
   List<Widget> chats = [
-    sendChatItem(image: 'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D', username: 'Ahmed', time: '10:20', message: 'Hello', isSeen: true,hasStory: false, isReceived: true,numberReceivedMessages: 12),
-    sendChatItem(image: 'https://images.unsplash.com/photo-1494959764136-6be9eb3c261e?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D', username: 'Doaa', time: '14:20', message: 'Welcome', isSeen: false, hasStory: false,isReceived: false),
-    sendChatItem(image: 'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D', username: 'Mina', time: '15:50', message: 'Hello', isSeen: true, hasStory: true,isReceived: true,numberReceivedMessages:1),
-    sendChatItem(image: 'https://images.unsplash.com/photo-1494959764136-6be9eb3c261e?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D', username: 'Menna', time: '20:40', message: 'Welcome', isSeen: false,hasStory: false,isReceived: false),
-    sendChatItem(image: 'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D', username: 'Mohamed', time: '23:50', message: 'Hello', isSeen: true,hasStory: true,isReceived: true,numberReceivedMessages: 7),
+    chatItem(image: 'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D', username: 'Ahmed', time: '10:20', message: 'Hello', isSeen: true,hasStory: false, isReceived: true,numberReceivedMessages: 12),
+    chatItem(image: 'https://images.unsplash.com/photo-1494959764136-6be9eb3c261e?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D', username: 'Doaa', time: '14:20', message: 'Welcome', isSeen: false, hasStory: false,isReceived: false),
+    chatItem(image: 'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D', username: 'Mina', time: '15:50', message: 'Hello', isSeen: true, hasStory: true,isReceived: true,numberReceivedMessages:1),
+    chatItem(image: 'https://images.unsplash.com/photo-1494959764136-6be9eb3c261e?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D', username: 'Menna', time: '20:40', message: 'Welcome', isSeen: false,hasStory: false,isReceived: false),
+    chatItem(image: 'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D', username: 'Mohamed', time: '23:50', message: 'Hello', isSeen: true,hasStory: true,isReceived: true,numberReceivedMessages: 7),
   ];
 
   @override
@@ -37,7 +37,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
- static  Widget sendChatItem({required String image,required String username,required String time,required String message,required bool isSeen,required bool hasStory,required bool isReceived,int numberReceivedMessages = 0}) {
+ static  Widget chatItem({required String image,required String username,required String time,required String message,required bool isSeen,required bool hasStory,required bool isReceived,int numberReceivedMessages = 0}) {
     return  InkWell(
       onTap: (){
 
@@ -45,6 +45,7 @@ class HomeScreen extends StatelessWidget {
       child: Container(
         margin: EdgeInsets.all(10),
         child: Row(
+
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Stack(
@@ -120,6 +121,5 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
-
 
 }
