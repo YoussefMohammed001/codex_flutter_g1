@@ -1,5 +1,5 @@
-import 'package:codex_flutter_g1/note/note_manager/notes_cubit.dart';
-import 'package:codex_flutter_g1/note/notes_screen.dart';
+import 'package:codex_flutter_g1/features/notes/notes_manager/notes_cubit.dart';
+import 'package:codex_flutter_g1/features/notes/view/screens/notes_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,7 +17,12 @@ class MyApp extends StatelessWidget {
 
       ),
       home: BlocProvider(
-       create: (context) => NotesCubit()..getNotes(),
+       create: (context) {
+         // final  cubit  = NotesCubit();
+         // cubit.getNotes();
+         // return cubit;
+         return NotesCubit()..getNotes();
+       },
        //  create: (context){
        //    final cubit = NotesCubit();
        //    cubit.getNotes();
