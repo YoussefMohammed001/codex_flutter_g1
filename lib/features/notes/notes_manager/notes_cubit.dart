@@ -20,6 +20,22 @@ class NotesCubit extends Cubit<NotesState> {
   }
 
   addNote(NoteModel noteModel){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     notes.add(noteModel);
     emit(AddNoteSuccessState());
     emit(GetNotesLoadedState(notes: notes));
