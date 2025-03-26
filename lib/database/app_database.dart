@@ -34,7 +34,7 @@ class AppDatabase {
  }
 
  static Future<List<NoteModel>> getNotes() async {
-  List<Map> list =  await  database!.rawQuery("SELECT * FROM Naaotes");
+  List<Map> list =  await  database!.rawQuery("SELECT * FROM Notes");
   print(list);
   return list.map((e)  => NoteModel.fromMap(e)).toList();
  }
