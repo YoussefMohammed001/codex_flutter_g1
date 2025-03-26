@@ -1,3 +1,4 @@
+import 'package:codex_flutter_g1/database/app_database.dart';
 import 'package:codex_flutter_g1/features/notes/models/note_model.dart';
 import 'package:codex_flutter_g1/features/notes/notes_manager/notes_cubit.dart';
 import 'package:codex_flutter_g1/features/notes/view/widgets/notes_list.dart';
@@ -95,9 +96,13 @@ class NotesScreen extends StatelessWidget {
                           ),
                         ),
                         onPressed: () {
-                          context.read<NotesCubit>().addNote(NoteModel(
-                              title: titleController.text,
-                              body: bodyController.text));
+                          AppDatabase.insertNote(noteModel: NoteModel(
+                              title: titleController.text, body: bodyController.text
+                          ));
+                          titleController.clear();
+                          bodyController.clear();
+                          Navigator.pop(context);
+                          context.read<NotesCubit>().getNotes();
                         },
                       ),
                     ],

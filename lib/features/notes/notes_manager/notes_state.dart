@@ -7,8 +7,10 @@ class NotesInitialState extends NotesState {}
 class GetNotesLoadingState extends NotesState {}
 
 class GetNotesLoadedState extends NotesState {
-  final List<NoteModel> notes;
-  GetNotesLoadedState({required this.notes});
+}
+class GetNotesErrorState extends NotesState {
+  final String message;
+  GetNotesErrorState(this.message);
 }
 
 class AddNoteSuccessState extends NotesState {}

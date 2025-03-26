@@ -18,16 +18,11 @@ class MyApp extends StatelessWidget {
       ),
       home: BlocProvider(
        create: (context) {
-         // final  cubit  = NotesCubit();
-         // cubit.getNotes();
-         // return cubit;
+         // final noteCubit = NotesCubit();
+         // noteCubit.getNotes();
+         // return noteCubit;
          return NotesCubit()..getNotes();
        },
-       //  create: (context){
-       //    final cubit = NotesCubit();
-       //    cubit.getNotes();
-       //    return cubit;
-       //  },
         child: NotesScreen(),
       ),
 
