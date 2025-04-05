@@ -1,45 +1,40 @@
-import 'package:codex_flutter_g1/database/app_database.dart';
-import 'package:codex_flutter_g1/features/notes/models/note_model.dart';
 import 'package:codex_flutter_g1/features/notes/notes_manager/notes_cubit.dart';
+import 'package:codex_flutter_g1/features/notes/view/widgets/add_note_bottom_sheet.dart';
 import 'package:codex_flutter_g1/features/notes/view/widgets/notes_list.dart';
+import 'package:codex_flutter_g1/features/notes/view/widgets/show_snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class NotesScreen extends StatelessWidget {
-  NotesScreen({super.key});
+ const  NotesScreen({super.key});
 
-  TextEditingController titleController = TextEditingController();
 
-  TextEditingController bodyController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return BlocListener<NotesCubit, NotesState>(
+      listener: (context, state) {
+        if(state is GetNotesLoadingState){
+          print("$state loading");
+        } else if(state is GetNotesLoadedState){
+          print("$state loaded");
+        } else if(state is GetNotesErrorState){
+          print("$state error");
+        } else if(state is AddNoteSuccessState){
+          print("$state success");
+          showSnackBar(context: context, title:  "Note Added", color: Colors.black, onPressed: () {
+          });
+          Navigator.pop(context);
+        } else if(state is DeleteNoteSuccessState){
+          print("$state success");
+          showSnackBar(context: context, title:  state.message, color: Colors.black, onPressed: () {
+          });
+        } else if(state is DeleteNoteErrorState) {
+          showSnackBar(context: context, title:  state.message, color: Colors.red, onPressed: () {
 
-      listener: (BuildContext context,  state) {
-      if(state is AddNoteSuccessState){
-        print("notes added");
-        Navigator.pop(context);
-        final snackBar = SnackBar(content: Text('notes added',
-          style: TextStyle(color: Colors.white),
-        ),
-          backgroundColor: Colors.black,
-          action: SnackBarAction(
-            label: 'Undo', onPressed: () {
-
-          },
-
-          ),
-        );
-        ScaffoldMessenger.of(context).showSnackBar(snackBar, );
-      }else if(state is GetNotesLoadedState){
-
-        print("notes loaded");
-
-      } else if(state is GetNotesLoadingState){
-        print("notes loading");
-      }
-
+          });
+          print("${state.message} error");
+        }
       },
       child: Scaffold(
         appBar: AppBar(
@@ -49,74 +44,32 @@ class NotesScreen extends StatelessWidget {
           centerTitle: true,
           backgroundColor: Colors.black,
         ),
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.black,
-          onPressed: () {
-            showModalBottomSheet<void>(
-              context: context,
-              builder: (BuildContext bottomSheetContext) {
-                return Container(
-                  height: 350,
-                  margin: EdgeInsets.all(10),
-                  child: Column(
-                    spacing: 20,
-                    children: <Widget>[
-                      const Text('Add Note', style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-
-                      ),),
-
-                      TextFormField(
-                        controller: titleController,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          hintText: "Enter title",
-                        ),
-                      ),
-                      TextFormField(
-                        controller: bodyController,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          hintText: "Enter body",
-                        ),
-                      ),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.black,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          minimumSize: Size(200, 50),
-                        ),
-                        child: const Text("Add Note",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        onPressed: () {
-                          AppDatabase.insertNote(noteModel: NoteModel(
-                              title: titleController.text, body: bodyController.text
-                          ));
-                          titleController.clear();
-                          bodyController.clear();
-                          Navigator.pop(context);
-                          context.read<NotesCubit>().getNotes();
-                        },
-                      ),
-                    ],
-                  ),
-                );
+        floatingActionButton: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            FloatingActionButton(
+              backgroundColor: Colors.black,
+              onPressed: () {
+                showAddNoteBottomSheet(context: context,);
               },
-            );
-          },
-
-
-          child: Icon(Icons.add, color: Colors.white,),
-
+            
+              child: Icon(Icons.add, color: Colors.white,),
+            
+            ),
+            SizedBox(width: 10,),
+            FloatingActionButton(
+              backgroundColor: Colors.blue,
+              onPressed: (){
+            },
+              child: Icon(Icons.print_outlined, color: Colors.white,),
+            )
+          ],
         ),
-        body: NotesList(),
+        body: Column(
+          children: [
+            Expanded(child: NotesList()),
+          ],
+        ),
       ),
     );
   }

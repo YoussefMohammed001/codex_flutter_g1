@@ -11,7 +11,8 @@ class AppDatabase {
     "notes.db",
     version: 1,
     onCreate: (db,version) async {
-      await db.execute('CREATE TABLE Notes (id INTEGER PRIMARY KEY, title TEXT, body TEXT)');
+      //for bool  0 >  false, 1 > true
+      await db.execute('CREATE TABLE Notes (id INTEGER PRIMARY KEY, title TEXT, body TEXT, isCritical INTEGER)');
        print("table created");
     },
     onOpen: (db){
@@ -22,15 +23,8 @@ class AppDatabase {
  }
 
  static  insertNote({required NoteModel noteModel}) async {
-   await database!.insert("Notes",
-   //     {
-   //   "title":noteModel.title,
-   //   "body":noteModel.body,
-   // }
-       noteModel.toMap()
-   );
+   await database!.insert("Notes", noteModel.toMap());
    print("note inserted");
-   //await database!.rawQuery('INSERT INTO Notes(title, body) VALUES("title 2", "body 2")');
  }
 
  static Future<List<NoteModel>> getNotes() async {
@@ -39,6 +33,8 @@ class AppDatabase {
   return list.map((e)  => NoteModel.fromMap(e)).toList();
  }
 
-
+ static Future<void> deleteNote({required int id}) async {
+   await database!.delete("Notes",where: "id = ?",whereArgs: [id]);
+ }
 
 }

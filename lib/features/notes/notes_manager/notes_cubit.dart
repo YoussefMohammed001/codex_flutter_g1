@@ -11,7 +11,6 @@ class NotesCubit extends Cubit<NotesState> {
   getNotes() async {
     print("get notes");
     emit(GetNotesLoadingState());
-
     try{
       notes =  await AppDatabase.getNotes();
       print("notes loaded from cubit $notes");
@@ -21,6 +20,29 @@ class NotesCubit extends Cubit<NotesState> {
       print("e  ====> $e");
     }
 
+  }
+
+
+  deleteNote({required int index}) async {
+    emit(DeleteNoteLoadingState());
+    try{
+     await AppDatabase.deleteNote(id: notes[index].id!);
+      notes.removeAt(index);
+      emit(DeleteNoteSuccessState("note deleted successfully"));
+
+    } catch(e){
+      print("e  ====> $e");
+      emit(DeleteNoteErrorState(e.toString()));
+    }
+
+
+  }
+
+
+  insertNote({required NoteModel noteModel}) async {
+    await AppDatabase.insertNote(noteModel: noteModel);
+    getNotes();
+    emit(AddNoteSuccessState());
   }
 
 }
