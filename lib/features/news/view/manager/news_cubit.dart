@@ -1,4 +1,4 @@
-import 'package:codex_flutter_g1/api_constants.dart';
+import 'package:codex_flutter_g1/features/news/news_api_constants.dart';
 import 'package:codex_flutter_g1/features/news/model/news_response_model.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,7 +9,7 @@ class NewsCubit extends Cubit<NewsState> {
   NewsCubit() : super(NewsInitial());
   final dio = Dio(
     BaseOptions(
-      baseUrl:APIConstants.baseUrl,
+      baseUrl:NewsAPIConstants.baseUrl,
       receiveTimeout:Duration(seconds: 60),
       connectTimeout:Duration(seconds: 60),
 
@@ -27,7 +27,7 @@ class NewsCubit extends Cubit<NewsState> {
     emit(NewsLoadingState());
     try{
       final response = await dio.get(
-          APIConstants.toHeadLines,
+          NewsAPIConstants.toHeadLines,
           queryParameters: {
             "country":"us",
             "category":category,
