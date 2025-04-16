@@ -1,27 +1,36 @@
-import 'package:codex_flutter_g1/features/login/view/manager/login_cubit.dart';
-import 'package:codex_flutter_g1/features/login/view/screen/login_screen.dart';
-import 'package:codex_flutter_g1/features/news/view/manager/news_cubit.dart';
-import 'package:codex_flutter_g1/features/news/view/screens/news_screen.dart';
+import 'package:codex_flutter_g1/core/styles/app_colors.dart';
+import 'package:codex_flutter_g1/features/splash/view/screen/splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyApp extends StatefulWidget {
+   MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+
+
+
+   @override
+  void initState() {
+    super.initState();
+  }
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
         useMaterial3: true,
       ),
 
-      home: BlocProvider(
-        create: (context) => LoginCubit(),
-        child: LoginScreen(),
-      ),
+      home:  SplashScreen()
+
     );
   }
 }

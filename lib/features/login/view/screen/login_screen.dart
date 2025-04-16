@@ -1,7 +1,7 @@
 import 'package:codex_flutter_g1/features/login/model/login_request_model.dart';
-import 'package:codex_flutter_g1/features/login/view/manager/login_cubit.dart';
-import 'package:codex_flutter_g1/features/news/view/manager/news_cubit.dart';
-import 'package:codex_flutter_g1/features/news/view/screens/news_screen.dart';
+import 'package:codex_flutter_g1/features/login/view_model/login_cubt/login_cubit.dart';
+import 'package:codex_flutter_g1/features/login/view_model/login_cubt/login_state.dart';
+import 'package:codex_flutter_g1/features/main_screen/view/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -27,13 +27,14 @@ final _formKey = GlobalKey<FormState>();
     }else if(state is LoginSuccess){
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.message)));
       print("listener: ${state.message}");
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) {
-        return BlocProvider(
 
-  create: (context) => NewsCubit()..getTopHeadlines(category: "general"),
-  child: NewsScreen(),
-);
-      }));
+      // TODO: push main screen
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) {
+        return MainScreen();
+      }
+
+      ));
+
     }
   },
   child: Scaffold(
