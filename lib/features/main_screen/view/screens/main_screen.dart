@@ -1,4 +1,5 @@
 
+import 'package:codex_flutter_g1/features/categories/view/screens/categories_screen.dart';
 import 'package:codex_flutter_g1/features/main_screen/view/widgets/main_screen_drawer.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   List<Widget> screens  = [
     HomeScreen(),
-    Center(child: Text("Categories")),
+    CategoriesScreen(),
     Center(child: Text("Cart")),
   ];
   int index = 0;
@@ -22,9 +23,17 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Visibility(
+          visible: index == 0,
+          child: Container(
+              alignment: Alignment.centerRight,
+              child: Icon(Icons.shopping_cart_outlined)),
+        ),
+      ),
       drawer: MainScreenDrawer(),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.white,
         currentIndex: index,
         onTap: (v){
 setState(() {

@@ -1,3 +1,4 @@
+import 'package:codex_flutter_g1/core/routes/routes_services.dart';
 import 'package:codex_flutter_g1/core/styles/app_colors.dart';
 import 'package:codex_flutter_g1/features/splash/view/screen/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -28,8 +29,8 @@ class _MyAppState extends State<MyApp> {
         colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
         useMaterial3: true,
       ),
-
-      home:  SplashScreen()
+      debugShowMaterialGrid: false,
+      onGenerateRoute: RoutesServices.generateRoute,
 
     );
   }

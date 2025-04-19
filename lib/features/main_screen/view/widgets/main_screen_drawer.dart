@@ -13,12 +13,13 @@ class MainScreenDrawer extends StatelessWidget {
     return Drawer(
       child: Padding(
         padding: const EdgeInsets.symmetric(
-          vertical: 70,
-          horizontal: 30,
+          horizontal: 10,
+          vertical: 20,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            SizedBox(height: 50,),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -87,6 +88,7 @@ class MainScreenDrawer extends StatelessWidget {
               title: Text("Privacy Policy"),
             ),
             Spacer(),
+            Divider(),
             InkWell(
               onTap: () async {
                 final SharedPreferences prefs = await SharedPreferences

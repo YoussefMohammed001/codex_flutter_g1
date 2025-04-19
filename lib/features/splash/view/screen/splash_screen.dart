@@ -1,3 +1,4 @@
+import 'package:codex_flutter_g1/core/routes/routes.dart';
 import 'package:codex_flutter_g1/core/styles/app_colors.dart';
 import 'package:codex_flutter_g1/features/login/view/screen/login_screen.dart';
 import 'package:codex_flutter_g1/features/login/view_model/login_cubt/login_cubit.dart';
@@ -19,22 +20,9 @@ class _SplashScreenState extends State<SplashScreen> {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     int? userId = prefs.getInt("id");
     if (userId != null) {
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (BuildContext context) {
-        return MainScreen();
-      }
-
-      ));
+  Navigator.pushNamed(context, Routes.main);
     } else {
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (BuildContext context) {
-        return BlocProvider(
-          create: (context) => LoginCubit(),
-          child: LoginScreen(),
-        );
-      }
-
-      ));
+      Navigator.pushNamed(context, Routes.login);
     }
   }
 
