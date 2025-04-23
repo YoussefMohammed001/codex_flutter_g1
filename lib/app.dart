@@ -29,7 +29,7 @@ class _MyAppState extends State<MyApp> {
         colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
         useMaterial3: true,
       ),
-      debugShowMaterialGrid: false,
+      debugShowCheckedModeBanner: false,
       onGenerateRoute: RoutesServices.generateRoute,
 
     );

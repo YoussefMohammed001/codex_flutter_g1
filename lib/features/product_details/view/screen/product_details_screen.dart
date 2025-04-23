@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:codex_flutter_g1/core/styles/app_colors.dart';
 import 'package:codex_flutter_g1/features/product_details/product_details_args.dart';
 import 'package:codex_flutter_g1/features/product_details/view_model/product_details_cubit.dart';
+import 'package:codex_flutter_g1/shared/widgets/discount_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:readmore/readmore.dart';
@@ -64,6 +65,35 @@ class ProductDetailsScreen extends StatelessWidget {
                               color: AppColors.secondaryColor,
                             )),
 
+                          ],
+                        ),
+                        SizedBox(height: 10,),
+                        Divider(),
+                        SizedBox(height: 10,),
+                        Row(
+                          children: [
+                            Text("${context.read<ProductDetailsCubit>().productDetailsModelResponse.data!.price} EGP",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                            ),
+                            ),
+                            SizedBox(width: 10,),
+                            Visibility(
+                              visible:  context.read<ProductDetailsCubit>().productDetailsModelResponse.data!.discount != 0,
+                              child: Row(
+                                children: [
+                                  Text("${context.read<ProductDetailsCubit>().productDetailsModelResponse.data!.oldPrice} EGP",
+                                  style: TextStyle(
+                                    color: Colors.red,
+                                    decoration: TextDecoration.lineThrough,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                  ),
+                                  SizedBox(width: 10,),
+                                  DiscountWidget(discount: context.read<ProductDetailsCubit>().productDetailsModelResponse.data!.discount,)
+                                ],
+                              ),
+                            )
                           ],
                         ),
                         SizedBox(height: 10,),

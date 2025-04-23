@@ -3,4 +3,5 @@ class Routes{
  static const String login ="/loginScreen";
  static const String main ="/mainScreen";
  static const String productDetails ="/productDetailsScreen";
+ static const String categoryProductsScreen ="/categoryProductsScreen";
 }

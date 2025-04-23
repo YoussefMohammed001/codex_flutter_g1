@@ -1,4 +1,5 @@
 import 'package:codex_flutter_g1/core/routes/routes.dart';
+import 'package:codex_flutter_g1/features/category_products/view/screens/category_products_screen.dart';
 import 'package:codex_flutter_g1/features/home/view/screens/home_screen.dart';
 import 'package:codex_flutter_g1/features/login/view/screen/login_screen.dart';
 import 'package:codex_flutter_g1/features/login/view_model/login_cubt/login_cubit.dart';
@@ -37,6 +38,11 @@ class RoutesServices {
         return MaterialPageRoute(builder: (context) {
           final args = settings.arguments as ProductDeailsArgs;
           return ProductDetailsScreen(productDeailsArgs:args ,);
+        });
+        case Routes.categoryProductsScreen:
+        return MaterialPageRoute(builder: (context) {
+         final args = settings.arguments as int;
+          return CategoryProductsScreen(id: args,);
         });
       default:
         return MaterialPageRoute(builder: (context) {

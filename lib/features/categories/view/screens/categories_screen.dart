@@ -1,3 +1,4 @@
+import 'package:codex_flutter_g1/core/routes/routes.dart';
 import 'package:codex_flutter_g1/features/categories/view_model/categories_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart' show BlocBuilder, BlocProvider, ReadContext;
@@ -19,28 +20,37 @@ class CategoriesScreen extends StatelessWidget {
           itemCount: context.read<CategoriesCubit>().categoriesResponse.data.categories.length,
           itemBuilder: (BuildContext context, int index) {
 
-            return Container(
-              margin: EdgeInsets.all(10),
-              padding: EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Row(
-                children: [
-                  Image.network(context.read<CategoriesCubit>().categoriesResponse.data.categories[index].image,
-                  width: 100,
-                      height: 100,
-                  ),
-                  SizedBox(width: 10,),
-                  Text(context.read<CategoriesCubit>().categoriesResponse.data.categories[index].name,
-                  style: TextStyle(
-                    color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                    fontSize: 20
-                  ),
-                  ),
-                ],
+
+            return InkWell(
+              onTap: () {
+                final int id = context.read<CategoriesCubit>().categoriesResponse.data.categories[index].id;
+
+                Navigator.pushNamed(context, Routes.categoryProductsScreen,arguments: id);
+
+              },
+              child: Container(
+                margin: EdgeInsets.all(10),
+                padding: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Row(
+                  children: [
+                    Image.network(context.read<CategoriesCubit>().categoriesResponse.data.categories[index].image,
+                    width: 100,
+                        height: 100,
+                    ),
+                    SizedBox(width: 10,),
+                    Text(context.read<CategoriesCubit>().categoriesResponse.data.categories[index].name,
+                    style: TextStyle(
+                      color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                      fontSize: 20
+                    ),
+                    ),
+                  ],
+                ),
               ),
             );
           },

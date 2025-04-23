@@ -6,5 +6,4 @@ class AppColors{
   static const blackTextColor = Color(0xff020402);
   static const darkGreenTextColor = Color(0xff1f241f);
 
-
 }

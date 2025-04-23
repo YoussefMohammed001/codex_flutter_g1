@@ -9,6 +9,8 @@ static init(){
     baseUrl:EndPoints.baseUrl,
     headers: {
       "lang":"en",
+      "Content-Type":"application/json",
+      "Accept":"application/json"
     },
     receiveTimeout:Duration(seconds: 60),
     connectTimeout:Duration(seconds: 60),
@@ -22,6 +24,7 @@ Map<String,dynamic> data = const {},
 Map<String,dynamic> queryParameters = const {},
 }) async {
   try{
+
     print("request url ===> ${_dio.options.baseUrl+endPoint}");
     final response = await _dio.get(endPoint,
         data: data,
@@ -32,12 +35,28 @@ Map<String,dynamic> queryParameters = const {},
   } on DioException catch(e){
     print("app dio error =====>  ${e.response}");
   }
-
-
 }
 
 
 // TODO: add post function
+  static postData({
+    required String endPoint,
+    Map<String,dynamic> data = const {},
+    Map<String,dynamic> queryParameters = const {},
+  }) async {
+    try{
+      print("request url ===> ${_dio.options.baseUrl+endPoint}");
+      final response = await _dio.post(endPoint,
+          data: data,
+          queryParameters:queryParameters
+      );
+      print("app dio =====>  ${response.data}");
+      return response;
+    } on DioException catch(e){
+      print("app dio error =====>  ${e.message}");
+      print("app dio error =====>  ${e.response}");
+    }
+  }
 
 // TODO: add put function
 

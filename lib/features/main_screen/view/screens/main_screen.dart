@@ -1,6 +1,7 @@
 
 import 'package:codex_flutter_g1/features/categories/view/screens/categories_screen.dart';
 import 'package:codex_flutter_g1/features/main_screen/view/widgets/main_screen_drawer.dart';
+import 'package:codex_flutter_g1/features/search/view/screens/search_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../../home/view/screens/home_screen.dart' show HomeScreen;
@@ -16,7 +17,7 @@ class _MainScreenState extends State<MainScreen> {
   List<Widget> screens  = [
     HomeScreen(),
     CategoriesScreen(),
-    Center(child: Text("Cart")),
+    SearchScreen(),
   ];
   int index = 0;
 
@@ -52,8 +53,8 @@ setState(() {
               icon: Icon(Icons.category_outlined),
             ),
             BottomNavigationBarItem(
-              label:"Cart" ,
-              icon: Icon(Icons.shopping_cart_outlined),
+              label:"Search" ,
+              icon: Icon(Icons.search),
             ),
 
       ]),
