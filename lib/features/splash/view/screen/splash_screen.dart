@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:codex_flutter_g1/core/routes/routes.dart';
 import 'package:codex_flutter_g1/core/styles/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart' show SharedPreferences;
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -16,7 +15,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
 bool isVisible  = false;
 double size = 50;
 String splashText = "";
-String splashFullText = "SOUQ APP";
+String splashFullText = "Note App";
 
 late AnimationController animationController;
 late Animation<Offset> _offsetAnimation;
@@ -27,13 +26,7 @@ showIcon(){
 
 
   checkLoginStatus() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    int? userId = prefs.getInt("id");
-    if (userId != null) {
-  Navigator.pushReplacementNamed(context, Routes.main);
-    } else {
     Navigator.pushReplacementNamed(context, Routes.login);
-    }
   }
 animatedText() async {
   for(int  letter = 0 ; letter < splashFullText.length; letter++){
@@ -117,7 +110,7 @@ animatedText() async {
             AnimatedOpacity(
               opacity: isVisible ? 1 : 0,
               duration: Duration(milliseconds: 800),
-              child: Icon(Icons.storefront_outlined, size: 100,
+              child: Icon(Icons.note_alt_outlined, size: 100,
                 color: AppColors.primaryColor,
               ),
             ),
@@ -133,7 +126,7 @@ animatedText() async {
 
             SlideTransition(
                 position: _offsetAnimation,
-                child: Text("Enjoy our products",
+                child: Text("Save Your Moments",
                 style: TextStyle(
                   color: AppColors.primaryColor,
                   fontWeight: FontWeight.w700,

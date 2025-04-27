@@ -1,4 +1,3 @@
-import 'package:codex_flutter_g1/core/styles/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class DiscountWidget extends StatelessWidget {

@@ -1,10 +1,9 @@
 import 'package:codex_flutter_g1/core/routes/routes_services.dart';
 import 'package:codex_flutter_g1/core/styles/app_colors.dart';
-import 'package:codex_flutter_g1/features/splash/view/screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatefulWidget {
-   MyApp({super.key});
+ const  MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -18,11 +17,9 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
   }
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -34,4 +31,5 @@ class _MyAppState extends State<MyApp> {
 
     );
   }
+
 }
