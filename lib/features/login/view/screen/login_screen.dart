@@ -1,6 +1,8 @@
 import 'package:codex_flutter_g1/core/routes/routes.dart';
+import 'package:codex_flutter_g1/features/login/view_model/login_cubit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart' show BlocBuilder, BlocListener, BlocProvider, ReadContext;
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -16,10 +18,19 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final _formKey = GlobalKey<FormState>();
 
-  FirebaseAuth auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return BlocProvider(
+  create: (context) => LoginCubit(),
+  child: BlocListener<LoginCubit, LoginState>(
+  listener: (context, state) {
+    if (state is LoginSuccess) {
+      Navigator.pushNamed(context, Routes.homeScreen);
+    } else if (state is LoginFailure) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.errorMessage)));
+    }
+  },
+  child: Scaffold(
       appBar: AppBar(
       ),
       body: Form(
@@ -85,23 +96,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       )),
                 ),
-                Padding(
+                BlocBuilder<LoginCubit, LoginState>(
+  builder: (context, state) {
+    return state is LoginLoading ? CircularProgressIndicator() : Padding(
                   padding: EdgeInsets.symmetric(horizontal: 30),
                   child: ElevatedButton(
                     onPressed: () async {
                       if (_formKey.currentState!.validate()) {
-                        print(
-                            "email: ${emailController.text}\npassword: ${passwordController.text}");
-                      await  auth
-                            .signInWithEmailAndPassword(
-                                email: emailController.text,
-                                password: emailController.text)
-                            .then((onValue) {
-                          print("user id ====> ${onValue.user!.uid}");
-                          print("user email ==> ${{onValue.user!.email}}");
-                        }).catchError((onError) {
-                          print("error===> $onError");
-                        });
+                      context.read<LoginCubit>().login(emailController.text, passwordController.text);
                       }
                     },
                     style: ButtonStyle(
@@ -117,7 +119,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
-                ),
+                );
+  },
+),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -137,6 +141,8 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
         ),
       ),
-    );
+    ),
+),
+);
   }
 }

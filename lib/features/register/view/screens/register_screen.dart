@@ -3,10 +3,16 @@ import 'package:codex_flutter_g1/features/register/view_model/register_cubit.dar
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class RegisterScreen extends StatelessWidget {
-  RegisterScreen({super.key});
+class RegisterScreen extends StatefulWidget {
+ const RegisterScreen({super.key});
 
+  @override
+  State<RegisterScreen> createState() => _RegisterScreenState();
+}
+
+class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController usernameController = TextEditingController();
+
   TextEditingController emailController = TextEditingController();
 
   TextEditingController passwordController = TextEditingController();

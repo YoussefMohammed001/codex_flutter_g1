@@ -1,4 +1,5 @@
 import 'package:codex_flutter_g1/core/routes/routes.dart';
+import 'package:codex_flutter_g1/features/home_screen.dart';
 import 'package:codex_flutter_g1/features/login/view/screen/login_screen.dart';
 import 'package:codex_flutter_g1/features/register/view/screens/register_screen.dart';
 import 'package:codex_flutter_g1/features/splash/view/screen/splash_screen.dart';
@@ -23,6 +24,11 @@ class RoutesServices {
       case Routes.register:
         return MaterialPageRoute(builder: (context) {
           return RegisterScreen();
+        });
+
+      case Routes.homeScreen:
+        return MaterialPageRoute(builder: (context) {
+          return HomeScreen();
         });
       default:
         return MaterialPageRoute(builder: (context) {
