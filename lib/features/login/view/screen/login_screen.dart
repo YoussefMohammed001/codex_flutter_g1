@@ -27,9 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
   child: BlocListener<LoginCubit, LoginState>(
   listener: (context, state) async {
     if (state is LoginSuccess) {
-      final SharedPreferences prefs = await SharedPreferences.getInstance();
-
-      Navigator.pushNamed(context, outes.homeScreen);
+      Navigator.pushNamed(context, Routes.homeScreen);
     } else if (state is LoginFailure) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.errorMessage)));
     }

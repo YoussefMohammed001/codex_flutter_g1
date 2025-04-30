@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'package:codex_flutter_g1/core/cash/app_preferences.dart';
+import 'package:codex_flutter_g1/core/cash/preference_keys.dart';
 import 'package:codex_flutter_g1/core/routes/routes.dart';
 import 'package:codex_flutter_g1/core/styles/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +28,14 @@ showIcon(){
 
 
   checkLoginStatus() async {
-    Navigator.pushReplacementNamed(context, Routes.login);
+    final String userId = AppPreferences.getString(key: PreferenceKeys.userId);
+    print('email key  ===> ${PreferenceKeys.userId.name}');
+    print('email  ===> $userId');
+    if(userId.isNotEmpty){
+      Navigator.pushReplacementNamed(context, Routes.homeScreen);
+    }else{
+      Navigator.pushReplacementNamed(context, Routes.login);
+    }
   }
 animatedText() async {
   for(int  letter = 0 ; letter < splashFullText.length; letter++){
