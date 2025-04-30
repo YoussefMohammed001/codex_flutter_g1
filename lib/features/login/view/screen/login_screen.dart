@@ -1,8 +1,8 @@
 import 'package:codex_flutter_g1/core/routes/routes.dart';
 import 'package:codex_flutter_g1/features/login/view_model/login_cubit.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart' show BlocBuilder, BlocListener, BlocProvider, ReadContext;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -18,14 +18,18 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final _formKey = GlobalKey<FormState>();
 
+
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
   create: (context) => LoginCubit(),
   child: BlocListener<LoginCubit, LoginState>(
-  listener: (context, state) {
+  listener: (context, state) async {
     if (state is LoginSuccess) {
-      Navigator.pushNamed(context, Routes.homeScreen);
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+      Navigator.pushNamed(context, outes.homeScreen);
     } else if (state is LoginFailure) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.errorMessage)));
     }

@@ -1,8 +1,6 @@
-import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:meta/meta.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
@@ -33,7 +31,6 @@ class LoginCubit extends Cubit<LoginState> {
         "username":username,
       });
     } on FirebaseException catch(e){
-      await auth.currentUser!.delete();
       print("error from firestore => ${e.message}");
       emit(LoginFailure(e.toString()));
     }

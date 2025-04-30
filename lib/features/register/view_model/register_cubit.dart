@@ -13,13 +13,6 @@ FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
 
   register({required String email,required String password,required String username})async{
     emit(RegisterLoading());
-    // auth.createUserWithEmailAndPassword(email: email, password: password).then((onValue){
-    //   print("====>${onValue.user}");
-    //   emit(RegisterSuccess());
-    // }).catchError((onError){
-    //   print(onError);
-    //   emit(RegisterFailure(onError.toString()));
-    // });
     try {
       final user = await auth.createUserWithEmailAndPassword(email: email, password: password);
 
