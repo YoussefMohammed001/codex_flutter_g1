@@ -41,17 +41,17 @@ class _AddBlogFormState extends State<AddBlogForm> {
   }
     XFile? image = XFile("");
 
+
   pickImage({required ImageSource source}) async {
     final ImagePicker picker = ImagePicker();
     image = await picker.pickImage(source: source);
-    setState(() {
-    });
+    setState(() {});
   }
 
 
 
-  @override
 
+  @override
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
@@ -122,6 +122,7 @@ class _AddBlogFormState extends State<AddBlogForm> {
                 ),
               ),
             ),
+
             SizedBox(
               height: 15,
             ),
