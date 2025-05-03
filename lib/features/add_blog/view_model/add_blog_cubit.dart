@@ -14,7 +14,7 @@ class AddBlogCubit extends Cubit<AddBlogState> {
   AddBlogCubit() : super(AddBlogInitial());
   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
 FirebaseStorage firebaseStorage = FirebaseStorage.instance;
-  addBlog({required BlogModel blogModel, required File image}) async {
+  addBlog({required AddBlogModel blogModel, required File image}) async {
     emit(AddBlogLoading());
     try{
       if(image.path.isNotEmpty){
@@ -23,9 +23,9 @@ FirebaseStorage firebaseStorage = FirebaseStorage.instance;
       }
 
       await firebaseFirestore.collection("blogs").doc(blogModel.id).set(blogModel.toJson());
-
  print("blog added");
-emit(AddBlogSuccess());
+
+emit(AddBlogSuccess(blogModel));
     } on FirebaseException catch (e){
       print(e);
       emit(AddBlogError(e.message.toString()));

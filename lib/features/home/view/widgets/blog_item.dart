@@ -1,9 +1,11 @@
-import 'package:codex_flutter_g1/features/add_blog/model/blog_model.dart';
+import 'package:codex_flutter_g1/features/home/model/get_blog_model.dart';
 import 'package:flutter/material.dart';
 
 class BlogItem extends StatelessWidget {
-  const BlogItem({super.key, required this.blogModel});
-final BlogModel blogModel;
+  const BlogItem({super.key, required this.blogModel, required this.onDelete});
+final GetBlogModel blogModel;
+final VoidCallback onDelete;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,15 +21,31 @@ final BlogModel blogModel;
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ClipRRect(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(15),
-                topRight: Radius.circular(15),
+          Stack(
+            alignment: Alignment.topRight,
+            children: [
+              ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(15),
+                    topRight: Radius.circular(15),
+                  ),
+                  child: Image.network(blogModel.image!,
+              width: double.infinity,
+                  fit: BoxFit.fill,
+                  height: 200,)),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  IconButton(onPressed: onDelete, icon: Icon(Icons.delete_outline,
+                  color: Colors.red,
+                  )),
+                  IconButton(onPressed: (){}, icon: Icon(Icons.edit,
+
+                  )),
+                ],
               ),
-              child: Image.network(blogModel.image!,
-width: double.infinity,
-              fit: BoxFit.fill,
-              height: 200,)),
+            ],
+          ),
           Padding(
             padding:  EdgeInsets.all(12),
             child: Column(

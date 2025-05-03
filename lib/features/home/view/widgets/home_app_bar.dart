@@ -12,6 +12,10 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget{
           fontWeight: FontWeight.w700
       ),
       ),
+      actions: [
+        IconButton(onPressed: (){}, icon: Icon(Icons.person_2_outlined)),
+        IconButton(onPressed: (){}, icon: Icon(Icons.logout_outlined)),
+      ],
       backgroundColor: AppColors.primaryColor,
       elevation: 10,
     );

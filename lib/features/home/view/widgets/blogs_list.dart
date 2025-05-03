@@ -1,27 +1,44 @@
-import 'package:codex_flutter_g1/features/home/view/manager/home_cubit.dart';
 import 'package:codex_flutter_g1/features/home/view/widgets/blog_item.dart';
+import 'package:codex_flutter_g1/features/home/view_model/home_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class BlogsList extends StatelessWidget {
+class BlogsList extends StatefulWidget {
   const BlogsList({super.key});
 
   @override
+  State<BlogsList> createState() => _BlogsListState();
+}
+
+class _BlogsListState extends State<BlogsList> {
+  @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, HomeState>(
+      buildWhen:  (previous,current) => current is GetBlogsSuccess,
       builder: (context, state) {
-        if(state is HomeLoading) {
+        if(state is GetBlogsLoading) {
           return const Center(
             child: CircularProgressIndicator(),
           );
-        }else if(state is HomeSuccess){
-          return Expanded(
-            child: ListView.separated(
+        }else if(state is GetBlogsSuccess){
+          if(context.read<HomeCubit>().blogsList.isEmpty){
+            return const Center(
+              child: Text("No Blogs"),
+            );
+          }else{
+            return ListView.separated(
               shrinkWrap: true,
-
-              itemCount: context.read<HomeCubit>().blogModel.length,
+              itemCount: context.read<HomeCubit>().blogsList.length,
               itemBuilder: (BuildContext context, int index) {
-                return BlogItem(blogModel: context.read<HomeCubit>().blogModel[index],);
+                return BlogItem(blogModel: context.read<HomeCubit>().blogsList[index],
+                  onDelete: () {
+                    context.read<HomeCubit>().deleteBlog(id: context.read<HomeCubit>().blogsList[index].id,);
+                    setState(() {
+                    context.read<HomeCubit>().blogsList.removeAt(index);
+                  });
+
+
+                  },);
               }, separatorBuilder: (BuildContext context, int index) {
               return Padding(
                 padding: const EdgeInsets.symmetric(
@@ -35,9 +52,10 @@ class BlogsList extends StatelessWidget {
               );
             },
 
-            ),
-          );
-        }else if(state is HomeFailure){
+            );
+
+          }
+        }else if(state is GetBlogsFailure){
           return Center(
             child: Text(state.error),
           );

@@ -1,14 +1,16 @@
-class BlogModel{final String id =  DateTime.now().millisecondsSinceEpoch.toString();
+class AddBlogModel{
+   String id =  DateTime.now().millisecondsSinceEpoch.toString();
  final String uid;
  final String title;
   final String description;
   String? image;
  final  String date;
 
-  BlogModel({required this.uid,required this.title,required this.description,this.image,required this.date});
+   AddBlogModel({required this.uid,required this.title,required this.description,this.image,required this.date});
 
   toJson(){
     return {
+      "id":id,
       "uid":uid,
       "title":title,
       "description":description,
@@ -17,14 +19,5 @@ class BlogModel{final String id =  DateTime.now().millisecondsSinceEpoch.toStrin
     };
   }
 
-factory  BlogModel.fromJson(Map<String,dynamic> json){
-    return BlogModel(
-      uid:json["uid"],
-      title:json["title"],
-      description:json["description"],
-      image:     json["image"],
-      date:json["date"],
-    );
-  }
 
 }

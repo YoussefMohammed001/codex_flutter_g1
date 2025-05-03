@@ -126,7 +126,7 @@ class _AddBlogFormState extends State<AddBlogForm> {
             SizedBox(
               height: 15,
             ),
-       image!.path.isEmpty ?
+      image == null || image!.path.isEmpty ?
        Container() :
        Image.file(File(image!.path,
        ),
@@ -140,16 +140,24 @@ class _AddBlogFormState extends State<AddBlogForm> {
                   builder: (BuildContext context) {
                   
                   return CupertinoAlertDialog(
-                    title: Text("Pick Image"),
+                    title: Text("Change Image"),
                     actions: [
                       CupertinoDialogAction(child: Text("Camera"),
                       onPressed: (){
                         pickImage(source: ImageSource.camera);
+                        setState(() {
+
+                        });
+                        Navigator.pop(context);
                         },
                       ),
                       CupertinoDialogAction(child: Text("Gallery"),
                         onPressed: (){
                           pickImage(source: ImageSource.gallery);
+                          Navigator.pop(context);
+                          setState(() {
+
+                          });
                         },
                       ),
                       CupertinoDialogAction(child: Text("Cancel",
@@ -168,7 +176,7 @@ class _AddBlogFormState extends State<AddBlogForm> {
                     
                      );
               },
-              child: Text("Pick Image"),
+              child: Text(       image == null || image!.path.isEmpty ?"Pick Image": "Change Image"),
 
             ),
             SizedBox(
@@ -182,7 +190,7 @@ class _AddBlogFormState extends State<AddBlogForm> {
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
                             context.read<AddBlogCubit>().addBlog(
-                                blogModel: BlogModel(
+                                blogModel: AddBlogModel(
                                     uid: AppPreferences.getString(
                                         key: PreferenceKeys.userId),
                                     image: image!.path,
