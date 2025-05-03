@@ -35,7 +35,7 @@ final int id;
          }, gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
            mainAxisSpacing:  10,
            crossAxisSpacing: 1,
-         childAspectRatio: 0.75,
+         childAspectRatio: 0.70,
            crossAxisCount: 2) ,
        );
    }else{
