@@ -1,8 +1,9 @@
+import 'package:codex_flutter_g1/features/add_blog/model/blog_model.dart';
 import 'package:flutter/material.dart';
 
 class BlogItem extends StatelessWidget {
-  const BlogItem({super.key});
-
+  const BlogItem({super.key, required this.blogModel});
+final BlogModel blogModel;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,7 +24,7 @@ class BlogItem extends StatelessWidget {
                 topLeft: Radius.circular(15),
                 topRight: Radius.circular(15),
               ),
-              child: Image.network("https://firebasestorage.googleapis.com/v0/b/bekya-9038f.appspot.com/o/uploads%2FGoKqDNhZVrVAUYSagEj0xEqbaZb2%2F1746040221295.png?alt=media&token=c37e6416-82c8-46b8-8143-1d0e25073a7f",
+              child: Image.network(blogModel.image!,
 width: double.infinity,
               fit: BoxFit.fill,
               height: 200,)),
@@ -35,19 +36,21 @@ width: double.infinity,
                 Row(
                   children: [
                     Expanded(
-                      child: Text("Title",
+                      child: Text(blogModel.title,
                         style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.w800,
                         ),
                       ),
                     ),
-                    Text("25-5-2025"),
+                    Text(blogModel.date,style: TextStyle(
+
+                    )),
 
                   ],
                 ),
                 Divider(),
-                Text("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                Text(blogModel.description,
                   maxLines: 3,
                   style: TextStyle(
                       fontSize: 16,

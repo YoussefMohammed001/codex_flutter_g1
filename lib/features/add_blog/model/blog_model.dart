@@ -10,10 +10,9 @@ class BlogModel{final String id =  DateTime.now().millisecondsSinceEpoch.toStrin
   toJson(){
     return {
       "uid":uid,
-      "id":id,
       "title":title,
       "description":description,
-      "image":image ??  "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bm90ZXxlbnwwfHwwfHx8MA%3D%3D",
+      "image":image!.isEmpty || image == null  ?   "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bm90ZXxlbnwwfHwwfHx8MA%3D%3D":image,
       "date":date,
     };
   }
@@ -23,7 +22,7 @@ factory  BlogModel.fromJson(Map<String,dynamic> json){
       uid:json["uid"],
       title:json["title"],
       description:json["description"],
-      image:json["image"],
+      image:     json["image"],
       date:json["date"],
     );
   }
