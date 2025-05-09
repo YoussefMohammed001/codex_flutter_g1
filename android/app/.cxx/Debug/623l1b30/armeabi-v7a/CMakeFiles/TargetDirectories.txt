@@ -1,0 +1,2 @@
+/Users/youssefmohamednaeem/StudioProjects/codex_flutter_g1/android/app/.cxx/Debug/623l1b30/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/youssefmohamednaeem/StudioProjects/codex_flutter_g1/android/app/.cxx/Debug/623l1b30/armeabi-v7a/CMakeFiles/rebuild_cache.dir
