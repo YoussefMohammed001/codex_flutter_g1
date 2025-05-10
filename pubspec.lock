@@ -105,6 +105,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.3.4+2"
+  crypto:
+    dependency: transitive
+    description:
+      name: crypto
+      sha256: "1e445881f28f22d6140f181e07737b22f1e099a5e1ff94b0af2f9e4a463f4855"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.6"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -121,6 +129,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.11"
+  device_frame:
+    dependency: transitive
+    description:
+      name: device_frame
+      sha256: d031a06f5d6f4750009672db98a5aa1536aa4a231713852469ce394779a23d75
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.0"
+  device_preview:
+    dependency: "direct main"
+    description:
+      name: device_preview
+      sha256: a694acdd3894b4c7d600f4ee413afc4ff917f76026b97ab06575fe886429ef19
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.0"
   dio:
     dependency: "direct main"
     description:
@@ -241,6 +265,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.22.0"
+  firebase_messaging:
+    dependency: "direct main"
+    description:
+      name: firebase_messaging
+      sha256: "5f8918848ee0c8eb172fc7698619b2bcd7dda9ade8b93522c6297dd8f9178356"
+      url: "https://pub.dev"
+    source: hosted
+    version: "15.2.5"
+  firebase_messaging_platform_interface:
+    dependency: transitive
+    description:
+      name: firebase_messaging_platform_interface
+      sha256: "0bbea00680249595fc896e7313a2bd90bd55be6e0abbe8b9a39d81b6b306acb6"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.6.5"
+  firebase_messaging_web:
+    dependency: transitive
+    description:
+      name: firebase_messaging_web
+      sha256: ffb392ce2a7e8439cd0a9a80e3c702194e73c927e5c7b4f0adf6faa00b245b17
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.10.5"
   firebase_storage:
     dependency: "direct main"
     description:
@@ -318,6 +366,11 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.0"
+  flutter_localizations:
+    dependency: transitive
+    description: flutter
+    source: sdk
+    version: "0.0.0"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -326,6 +379,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.28"
+  flutter_screenutil:
+    dependency: "direct main"
+    description:
+      name: flutter_screenutil
+      sha256: "8239210dd68bee6b0577aa4a090890342d04a136ce1c81f98ee513fc0ce891de"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.9.3"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -336,14 +397,38 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  http:
+  freezed_annotation:
     dependency: transitive
     description:
-      name: http
-      sha256: fe7ab022b76f3034adc518fb6ea04a82387620e19977665ea18d30a1cf43442f
+      name: freezed_annotation
+      sha256: c2e2d632dd9b8a2b7751117abcfc2b4888ecfe181bd9fca7170d9ef02e595fe2
       url: "https://pub.dev"
     source: hosted
-    version: "1.3.0"
+    version: "2.4.4"
+  google_identity_services_web:
+    dependency: transitive
+    description:
+      name: google_identity_services_web
+      sha256: "5d187c46dc59e02646e10fe82665fc3884a9b71bc1c90c2b8b749316d33ee454"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.3+1"
+  googleapis_auth:
+    dependency: "direct main"
+    description:
+      name: googleapis_auth
+      sha256: b81fe352cc4a330b3710d2b7ad258d9bcef6f909bb759b306bf42973a7d046db
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0"
+  http:
+    dependency: "direct main"
+    description:
+      name: http
+      sha256: "2c11f3f94c687ee9bad77c171151672986360b2b001d109814ee7140b2cf261b"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.4.0"
   http_parser:
     dependency: transitive
     description:
@@ -420,10 +505,18 @@ packages:
     dependency: "direct main"
     description:
       name: intl
-      sha256: "3df61194eb431efc39c4ceba583b95633a403f46c9fd341e550ce0bfa50e9aa5"
+      sha256: d6f56758b7d3014a48af9701c085700aac781a92a87a62b1333b46d8879661cf
       url: "https://pub.dev"
     source: hosted
-    version: "0.20.2"
+    version: "0.19.0"
+  json_annotation:
+    dependency: transitive
+    description:
+      name: json_annotation
+      sha256: "1ce844379ca14835a50d2f019a3099f419082cfdd231cd86a142af94dd5c6bb1"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.9.0"
   leak_tracker:
     dependency: transitive
     description:
@@ -528,6 +621,54 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.0"
+  permission_handler:
+    dependency: "direct main"
+    description:
+      name: permission_handler
+      sha256: "2d070d8684b68efb580a5997eb62f675e8a885ef0be6e754fb9ef489c177470f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "12.0.0+1"
+  permission_handler_android:
+    dependency: transitive
+    description:
+      name: permission_handler_android
+      sha256: "1e3bc410ca1bf84662104b100eb126e066cb55791b7451307f9708d4007350e6"
+      url: "https://pub.dev"
+    source: hosted
+    version: "13.0.1"
+  permission_handler_apple:
+    dependency: transitive
+    description:
+      name: permission_handler_apple
+      sha256: f000131e755c54cf4d84a5d8bd6e4149e262cc31c5a8b1d698de1ac85fa41023
+      url: "https://pub.dev"
+    source: hosted
+    version: "9.4.7"
+  permission_handler_html:
+    dependency: transitive
+    description:
+      name: permission_handler_html
+      sha256: "38f000e83355abb3392140f6bc3030660cfaef189e1f87824facb76300b4ff24"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.3+5"
+  permission_handler_platform_interface:
+    dependency: transitive
+    description:
+      name: permission_handler_platform_interface
+      sha256: eb99b295153abce5d683cac8c02e22faab63e50679b937fa1bf67d58bb282878
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.3.0"
+  permission_handler_windows:
+    dependency: transitive
+    description:
+      name: permission_handler_windows
+      sha256: "1a790728016f79a41216d88672dbc5df30e686e811ad4e698bfc51f76ad91f1e"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.1"
   petitparser:
     dependency: transitive
     description:

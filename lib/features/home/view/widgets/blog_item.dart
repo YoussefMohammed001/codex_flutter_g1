@@ -1,3 +1,4 @@
+import 'package:codex_flutter_g1/core/styles/app_colors.dart';
 import 'package:codex_flutter_g1/features/home/model/get_blog_model.dart';
 import 'package:flutter/material.dart';
 
@@ -33,16 +34,38 @@ final VoidCallback onDelete;
               width: double.infinity,
                   fit: BoxFit.fill,
                   height: 200,)),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  IconButton(onPressed: onDelete, icon: Icon(Icons.delete_outline,
-                  color: Colors.red,
-                  )),
-                  IconButton(onPressed: (){}, icon: Icon(Icons.edit,
-
-                  )),
-                ],
+              Container(
+                margin: EdgeInsets.all(10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Container(
+                      padding: EdgeInsets.all(7),
+                      decoration: BoxDecoration(
+                        color: AppColors.primaryColor,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child:
+                        InkWell(
+                          onTap: onDelete,
+                          child: Icon(Icons.delete_outline,
+                               color: Colors.red,
+                                               ),
+                        ),
+                    ),
+                    SizedBox(width: 10,),
+                    Container(
+                      padding: EdgeInsets.all(7),
+                      decoration: BoxDecoration(
+                        color: AppColors.primaryColor,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child:  InkWell(
+                          onTap: (){},
+                          child: Icon(Icons.edit,)),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

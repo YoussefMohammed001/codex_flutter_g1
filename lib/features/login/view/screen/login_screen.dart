@@ -1,7 +1,9 @@
 import 'package:codex_flutter_g1/core/routes/routes.dart';
 import 'package:codex_flutter_g1/features/login/view_model/login_cubit.dart';
+import 'package:codex_flutter_g1/send_notificaation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart' show BlocBuilder, BlocListener, BlocProvider, ReadContext;
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -27,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
   child: BlocListener<LoginCubit, LoginState>(
   listener: (context, state) async {
     if (state is LoginSuccess) {
-      Navigator.pushNamed(context, Routes.homeScreen);
+      Navigator.pushReplacementNamed(context, Routes.homeScreen);
     } else if (state is LoginFailure) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.errorMessage)));
     }
@@ -95,6 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         "Forget Password?",
                         style: TextStyle(
                           color: Colors.green,
+                          fontSize: 20.sp
                         ),
                       )),
                 ),
@@ -110,10 +113,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     },
                     style: ButtonStyle(
                       minimumSize: WidgetStatePropertyAll(
-                        Size(double.infinity, 50),
+                        Size(double.infinity, 50.h),
                       ),
                       shape: WidgetStatePropertyAll(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15))),
+                          borderRadius: BorderRadius.circular(15.r))),
                       backgroundColor: MaterialStatePropertyAll(Colors.green),
                     ),
                     child: Text(
@@ -137,7 +140,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           style: TextStyle(color: Colors.green),
                         ))
                   ],
-                )
+                ),
+
+                TextButton(onPressed: () async {
+                  await sendNotification();
+                }, child: Text("send notification"))
               ],
             ),
           ),

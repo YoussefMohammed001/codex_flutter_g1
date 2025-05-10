@@ -18,6 +18,7 @@ FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
 
       print("user ====> {${user.user!.delete()}}");
      final result =  await saveUserDataToFireStore(username: username);
+     print("result = ======> $result");
      if(result == true){
        emit(RegisterSuccess());
      }

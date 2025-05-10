@@ -54,7 +54,6 @@ animatedText() async {
 
   @override
   void initState() {
-    NotificationsServices().showNotification(id: 12, title: "test notification", body: "test notification body");
     animatedText();
     // Timer.periodic(Duration(milliseconds: 300), (timer) {
     //   size = size == 100 ? 50 : 100;
