@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
 bool isVisible  = false;
 double size = 50;
 String splashText = "";
-String splashFullText = "Note App";
+String splashFullText = "Movie App";
 
 late AnimationController animationController;
 late Animation<Offset> _offsetAnimation;
@@ -28,16 +28,6 @@ showIcon(){
 }
 
 
-  checkLoginStatus() async {
-    final String userId = AppPreferences.getString(key: PreferenceKeys.userId);
-    print('email key  ===> ${PreferenceKeys.userId.name}');
-    print('email  ===> $userId');
-    if(userId.isNotEmpty){
-      Navigator.pushReplacementNamed(context, Routes.homeScreen);
-    }else{
-      Navigator.pushReplacementNamed(context, Routes.login);
-    }
-  }
 animatedText() async {
   for(int  letter = 0 ; letter < splashFullText.length; letter++){
     await Future.delayed(Duration(milliseconds: 100));
@@ -90,7 +80,7 @@ animatedText() async {
   Future.delayed(Duration(
       seconds: 2
   )).then((onValue) {
-    checkLoginStatus();
+    Navigator.pushReplacementNamed(context, Routes.homeScreen);
   });
 
 
@@ -103,7 +93,6 @@ animatedText() async {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.secondaryColor,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -120,7 +109,7 @@ animatedText() async {
             AnimatedOpacity(
               opacity: isVisible ? 1 : 0,
               duration: Duration(milliseconds: 800),
-              child: Icon(Icons.note_alt_outlined, size: 100,
+              child: Icon(Icons.movie_creation_outlined, size: 100,
                 color: AppColors.primaryColor,
               ),
             ),
@@ -136,7 +125,7 @@ animatedText() async {
 
             SlideTransition(
                 position: _offsetAnimation,
-                child: Text("Save Your Moments",
+                child: Text("Explore Movies",
                 style: TextStyle(
                   color: AppColors.primaryColor,
                   fontWeight: FontWeight.w700,
