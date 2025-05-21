@@ -119,7 +119,6 @@ animatedText() async {
               ),
             ),
 
-
             SlideTransition(
                 position: _offsetAnimation,
                 child: Text("Explore Movies",
