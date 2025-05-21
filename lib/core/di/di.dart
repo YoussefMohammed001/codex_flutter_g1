@@ -5,6 +5,8 @@ import 'package:codex_flutter_g1/features/home/domain/usecase/top_movies_use_cas
 import 'package:get_it/get_it.dart';
 
 
+
+
 final  getIt = GetIt.instance;
 
 Future<void> setupGetIt() async{
