@@ -1,8 +1,5 @@
 import 'package:codex_flutter_g1/core/di/di.dart';
 import 'package:codex_flutter_g1/core/network/app_end_points.dart';
-import 'package:codex_flutter_g1/features/home/data/data_source/get_movies_api.dart';
-import 'package:codex_flutter_g1/features/home/data/repository/top_movies_repository_imp.dart';
-import 'package:codex_flutter_g1/features/home/domain/usecase/top_movies_use_case.dart';
 import 'package:codex_flutter_g1/features/home/presentation/manager/top_movies_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,6 +7,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
+
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -90,4 +91,6 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
+
+
 }

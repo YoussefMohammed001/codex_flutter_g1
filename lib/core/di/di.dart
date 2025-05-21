@@ -3,10 +3,9 @@ import 'package:codex_flutter_g1/features/home/data/repository/top_movies_reposi
 import 'package:codex_flutter_g1/features/home/domain/repository/top_movies_repository.dart';
 import 'package:codex_flutter_g1/features/home/domain/usecase/top_movies_use_case.dart';
 import 'package:get_it/get_it.dart';
-import 'package:http/http.dart';
+
 
 final  getIt = GetIt.instance;
-
 
 Future<void> setupGetIt() async{
 
