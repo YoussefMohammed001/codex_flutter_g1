@@ -4,9 +4,6 @@ import 'package:codex_flutter_g1/features/home/domain/repository/top_movies_repo
 import 'package:codex_flutter_g1/features/home/domain/usecase/top_movies_use_case.dart';
 import 'package:get_it/get_it.dart';
 
-
-
-
 final  getIt = GetIt.instance;
 
 Future<void> setupGetIt() async{
