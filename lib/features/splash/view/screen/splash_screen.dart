@@ -54,6 +54,7 @@ animatedText() async {
      );
     _offsetAnimation = Tween<Offset>(
       begin: Offset(0.0, 10.0),
+
       end:  Offset.zero,
     ).animate(
       CurvedAnimation(
