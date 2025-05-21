@@ -5,6 +5,7 @@ import 'package:meta/meta.dart';
 
 part 'top_movies_state.dart';
 
+
 class TopMoviesCubit extends Cubit<TopMoviesState> {
   TopMoviesCubit(this.topMoviesUsecase) : super(TopMoviesInitial());
   final TopMoviesUsecase topMoviesUsecase;
