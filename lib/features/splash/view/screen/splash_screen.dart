@@ -52,6 +52,7 @@ animatedText() async {
          vsync: this,
        duration: Duration(milliseconds: 600),
      );
+
     _offsetAnimation = Tween<Offset>(
       begin: Offset(0.0, 10.0),
 
