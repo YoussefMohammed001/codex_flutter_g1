@@ -50,7 +50,6 @@ animatedText() async {
     //   setState(() {
     //   });
     // });
-
      animationController = AnimationController(
          vsync: this,
        duration: Duration(milliseconds: 600),
