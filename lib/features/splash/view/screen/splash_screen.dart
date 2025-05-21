@@ -1,9 +1,6 @@
 import 'dart:async';
-import 'package:codex_flutter_g1/core/cash/app_preferences.dart';
-import 'package:codex_flutter_g1/core/cash/preference_keys.dart';
 import 'package:codex_flutter_g1/core/routes/routes.dart';
 import 'package:codex_flutter_g1/core/styles/app_colors.dart';
-import 'package:codex_flutter_g1/notifications_services.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
