@@ -9,13 +9,35 @@ part 'top_movies_state.dart';
 class TopMoviesCubit extends Cubit<TopMoviesState> {
   TopMoviesCubit(this.topMoviesUsecase) : super(TopMoviesInitial());
   final TopMoviesUsecase topMoviesUsecase;
-  getTopMovies() async {
-    emit(TopMoviesLoading());
-    final result = await topMoviesUsecase.call();
+
+
+  int _currentPage = 1;
+  bool _isLoadMoreData = false;
+  List<TopMoviesEntity> moviesList = [];
+
+  bool isMorePages = true;
+  getTopMovies({bool isInitial = false}) async {
+
+    if(_isLoadMoreData || !isMorePages) return;
+    if(isInitial){
+      emit(TopMoviesLoading());
+      _currentPage = 1;
+      moviesList.clear();
+    } else{
+      _isLoadMoreData = true;
+    }
+
+    final result = await topMoviesUsecase.call(page: _currentPage);
     result.fold((l) {
       emit(TopMoviesFailure(errorMessage: l));
     }, (r) {
-      emit(TopMoviesSuccess(topMovies: r));
+      moviesList.addAll(r.topMoviesEntity);
+      emit(TopMoviesSuccess(topMovies: List.from(moviesList)));
+      _currentPage++;
+      _isLoadMoreData = false;
+      if(_currentPage >500 ){
+        isMorePages = false;
+      }
     });
   }
 }

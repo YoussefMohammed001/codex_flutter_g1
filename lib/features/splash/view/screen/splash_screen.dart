@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:codex_flutter_g1/core/routes/routes.dart';
 import 'package:codex_flutter_g1/core/styles/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -113,6 +114,7 @@ animatedText() async {
               ),
             ),
             SizedBox(height: 20,),
+
             Text(splashText,
               style: TextStyle(
                   color: AppColors.blackTextColor,

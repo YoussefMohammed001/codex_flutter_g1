@@ -8,8 +8,8 @@ class TopMoviesRepositoryImp implements TopMoviesRepository{
   TopMoviesRepositoryImp({required this.topMoviesApi});
 
   @override
-  Future<Either<String, List<TopMoviesEntity>>> getTopMovies() async {
-    final result = await topMoviesApi.getTopMovies();
+  Future<Either<String, TopMoviesResultEntity>> getTopMovies({required int page }) async {
+    final result = await topMoviesApi.getTopMovies(page: page);
     return result.fold((l){
       return Left(l);
     }, (r){

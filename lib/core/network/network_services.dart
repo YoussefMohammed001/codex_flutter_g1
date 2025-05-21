@@ -16,7 +16,7 @@ class NetworkServices {
 
   }
 
-  static Future<Either<String, dynamic>> getData({
+   Future<Either<String, dynamic>> getData({
     required String endPoint,
     Map<String, dynamic>? data,
     Map<String, dynamic>? queryParameters,

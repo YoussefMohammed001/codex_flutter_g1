@@ -6,8 +6,8 @@ class TopMoviesUsecase{
   final TopMoviesRepository topMoviesRepository;
   TopMoviesUsecase({required this.topMoviesRepository});
 
-  Future<Either<String,List<TopMoviesEntity>>> call(){
-    return topMoviesRepository.getTopMovies();
+  Future<Either<String,TopMoviesResultEntity>> call({required int page }){
+    return topMoviesRepository.getTopMovies(page: page);
   }
 
 }

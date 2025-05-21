@@ -1,22 +1,41 @@
 import 'package:codex_flutter_g1/core/di/di.dart';
-import 'package:codex_flutter_g1/core/network/app_end_points.dart';
 import 'package:codex_flutter_g1/features/home/presentation/manager/top_movies_cubit.dart';
+import 'package:codex_flutter_g1/features/home/presentation/widgets/movie_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:lottie/lottie.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
 
+class _HomeScreenState extends State<HomeScreen> {
 
+   final ScrollController _scrollController = ScrollController();
 
+   late final TopMoviesCubit cubit;
+   @override
+  void initState() {
+    super.initState();
+    cubit =  TopMoviesCubit(getIt())..getTopMovies(isInitial: true);
+    _scrollController.addListener((){
+      if(_scrollController.position.pixels >=
+      _scrollController.position.maxScrollExtent - 100.h){
+        print("end of list");
+        cubit.getTopMovies();
+      }
+    });
+
+  }
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => TopMoviesCubit(getIt())
-        ..getTopMovies(),
+    return BlocProvider.value(
+      value: cubit,
       child: Scaffold(
         appBar: AppBar(title: Text("Top Movies",), centerTitle: true,),
         body: BlocBuilder<TopMoviesCubit, TopMoviesState>(
@@ -28,58 +47,36 @@ class HomeScreen extends StatelessWidget {
               return Center(child: Text(state.errorMessage));
             } if(state is TopMoviesSuccess){
               return ListView.builder(
-                itemCount: state.topMovies.length,
+                controller: _scrollController,
+
+                itemCount: state.topMovies.length+1,
                 itemBuilder: (BuildContext context, int index) {
-                  return Container(
-                    margin: EdgeInsets.all(5),
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15.r),
-                      border: Border.all(color: Colors.black),
-                    ),
-                    child: Row(
-                      children: [
-                        Image.network(
-                          AppEndPoints.baseImageIrl+state.topMovies[index].img,
-                          height: 100.h,
-                          width: 50.w,
-                        ),
-                        SizedBox(width: 10.w,),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: Text( state.topMovies[index].title,
-                                      maxLines: 1,
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 13.sp,
-                                      ),
-                                    ),
-                                  ),
-                                  Text( state.topMovies[index].date.toString(),
-                                    style: TextStyle(
-                                        color: Colors.grey.shade700
-                                    ),
-                                  )
-                                ],
-                              ),
-                              SizedBox(height: 5.h,),
-                              Text(
-                                state.topMovies[index].description,
-                                maxLines: 3,
-                              ),
-
-                            ],
+                  if(index == state.topMovies.length){
+                    return   cubit.isMorePages ?Center(child: Lottie.asset("assets/json/loading.json",
+                        height: 50.h,
+                        width: 50.w
+                    )) : Container(
+alignment: Alignment.center,
+                      margin: EdgeInsets.only(
+                        top: 10.h
+                      ),
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: Colors.grey[100],
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.shade400,
+                            spreadRadius: 5,
+                            blurRadius: 7,
+                            offset: Offset(0, 3), // changes position of shadow
                           ),
-                        ),
+                        ]
 
-                      ],
-                    ),
-                  );
+                      ),
+                      child: Text("-----End of results-----"),
+                    );
+                  }
+                  return MovieItem(topMoviesEntity:  state.topMovies[index],);
                 },
 
               );
@@ -91,6 +88,4 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
-
-
 }

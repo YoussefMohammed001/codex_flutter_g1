@@ -1,17 +1,17 @@
 import 'package:codex_flutter_g1/features/home/domain/entities/top_movies_entitiy.dart';
 
 class MoviesResponse {
-  final int page;
+  final int totalPages;
   final List<MovieModel> results;
 
   MoviesResponse({
-    required this.page,
+    required this.totalPages,
     required this.results,
   });
 
   factory MoviesResponse.fromJson(Map<String, dynamic> json) {
     return MoviesResponse(
-      page: json['page'],
+      totalPages: json['total_pages'],
       results: List<MovieModel>.from(
         json['results'].map((x) => MovieModel.fromJson(x)),
       ),
@@ -19,18 +19,14 @@ class MoviesResponse {
   }
 
 
-  List<TopMoviesEntity> toEntity() {
-    final moviesEntity =  results.map((e) {
-      return TopMoviesEntity(
-          id:  e.id,
-          title: e.title,
-          img: e.posterPath,
-          description: e.overview,
-          date: e.releaseDate
-      );
-    }).toList();
-    return moviesEntity;
+  TopMoviesResultEntity toEntity() {
+      return TopMoviesResultEntity(
+          totalPages: totalPages,
+        topMoviesEntity: results.map((e){
 
+          return TopMoviesEntity(id: e.id, title: e.title, img: e.backdropPath, description: e.overview, date: e.releaseDate);
+        }).toList()
+      );
 }
 }
 
