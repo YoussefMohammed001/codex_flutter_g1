@@ -18,16 +18,18 @@ class MoviesResponse {
     );
   }
 
-
   TopMoviesResultEntity toEntity() {
-      return TopMoviesResultEntity(
-          totalPages: totalPages,
-        topMoviesEntity: results.map((e){
-
-          return TopMoviesEntity(id: e.id, title: e.title, img: e.backdropPath, description: e.overview, date: e.releaseDate);
-        }).toList()
-      );
-}
+    return TopMoviesResultEntity(
+        totalPages: totalPages,
+        topMoviesEntity: results.map((e) {
+          return TopMoviesEntity(
+              id: e.id,
+              title: e.title,
+              img: e.backdropPath,
+              description: e.overview,
+              date: e.releaseDate);
+        }).toList());
+  }
 }
 
 class MovieModel {

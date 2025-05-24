@@ -1,7 +1,6 @@
-import 'package:bloc/bloc.dart';
 import 'package:codex_flutter_g1/features/home/domain/entities/top_movies_entitiy.dart';
 import 'package:codex_flutter_g1/features/home/domain/usecase/top_movies_use_case.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'top_movies_state.dart';
 

@@ -5,10 +5,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MovieItem extends StatelessWidget {
   const MovieItem({super.key, required this.topMoviesEntity});
-final TopMoviesEntity topMoviesEntity;
+  final TopMoviesEntity topMoviesEntity;
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return Container(
       margin: EdgeInsets.all(5),
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
@@ -18,11 +18,13 @@ final TopMoviesEntity topMoviesEntity;
       child: Row(
         children: [
           Image.network(
-            AppEndPoints.baseImageIrl+topMoviesEntity.img,
+            AppEndPoints.baseImageIrl + topMoviesEntity.img,
             height: 100.h,
             width: 50.w,
           ),
-          SizedBox(width: 10.w,),
+          SizedBox(
+            width: 10.w,
+          ),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,7 +32,8 @@ final TopMoviesEntity topMoviesEntity;
                 Row(
                   children: [
                     Expanded(
-                      child: Text( topMoviesEntity.title,
+                      child: Text(
+                        topMoviesEntity.title,
                         maxLines: 1,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
@@ -38,23 +41,22 @@ final TopMoviesEntity topMoviesEntity;
                         ),
                       ),
                     ),
-                    Text( topMoviesEntity.date.toString(),
-                      style: TextStyle(
-                          color: Colors.grey.shade700
-                      ),
+                    Text(
+                      topMoviesEntity.date.toString(),
+                      style: TextStyle(color: Colors.grey.shade700),
                     )
                   ],
                 ),
-                SizedBox(height: 5.h,),
+                SizedBox(
+                  height: 5.h,
+                ),
                 Text(
                   topMoviesEntity.description,
                   maxLines: 3,
                 ),
-
               ],
             ),
           ),
-
         ],
       ),
     );

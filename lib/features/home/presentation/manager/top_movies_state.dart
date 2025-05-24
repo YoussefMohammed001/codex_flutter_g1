@@ -1,6 +1,5 @@
 part of 'top_movies_cubit.dart';
 
-@immutable
 sealed class TopMoviesState {}
 
 final class TopMoviesInitial extends TopMoviesState {}
