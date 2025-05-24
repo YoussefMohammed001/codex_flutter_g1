@@ -1,6 +1,8 @@
+import 'package:chucker_flutter/chucker_flutter.dart';
 import 'package:codex_flutter_g1/core/network/app_end_points.dart';
 import 'package:dio/dio.dart';
 import 'package:either_dart/either.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class NetworkServices {
   static late Dio _dio;
@@ -13,6 +15,18 @@ class NetworkServices {
       connectTimeout: Duration(seconds: 60),
     );
     _dio = Dio(options);
+    _dio.interceptors.add(PrettyDioLogger(
+      responseBody: true,
+      request: true,
+      requestBody: true,
+      error: true,
+      compact: true,
+
+    ));
+    _dio.interceptors.add(ChuckerDioInterceptor(
+
+    ));
+
 
   }
 

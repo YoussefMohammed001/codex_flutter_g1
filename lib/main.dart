@@ -1,9 +1,11 @@
 import 'package:codex_flutter_g1/app.dart';
+import 'package:codex_flutter_g1/bloc_observer.dart';
 import 'package:codex_flutter_g1/core/cash/app_preferences.dart';
 import 'package:codex_flutter_g1/core/cash/preference_keys.dart';
 import 'package:codex_flutter_g1/core/di/di.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,7 +14,7 @@ Future<void> main() async {
   await setupGetIt();
   //initFcm();
   print("user id====> ${AppPreferences.getString(key: PreferenceKeys.userId)}");
-
+Bloc.observer = MyBlocObserver();
   runApp(
     DevicePreview(
       enabled: true,

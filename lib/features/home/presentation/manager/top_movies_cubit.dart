@@ -21,7 +21,7 @@ class TopMoviesCubit extends Cubit<TopMoviesState> {
     if(_isLoadMoreData || !isMorePages) return;
     if(isInitial){
       emit(TopMoviesLoading());
-      _currentPage = 1;
+      _currentPage =1;
       moviesList.clear();
     } else{
       _isLoadMoreData = true;
@@ -35,7 +35,7 @@ class TopMoviesCubit extends Cubit<TopMoviesState> {
       emit(TopMoviesSuccess(topMovies: List.from(moviesList)));
       _currentPage++;
       _isLoadMoreData = false;
-      if(_currentPage >500 ){
+      if(_currentPage >500){
         isMorePages = false;
       }
     });

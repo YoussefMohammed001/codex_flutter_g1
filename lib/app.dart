@@ -1,3 +1,4 @@
+import 'package:chucker_flutter/chucker_flutter.dart';
 import 'package:codex_flutter_g1/core/routes/routes_services.dart';
 import 'package:codex_flutter_g1/core/styles/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -12,8 +13,6 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
 
-
-
    @override
   void initState() {
     super.initState();
@@ -27,6 +26,7 @@ class _MyAppState extends State<MyApp> {
         splitScreenMode: true,
       builder: (context,child) {
         return MaterialApp(
+          navigatorObservers: [ChuckerFlutter.navigatorObserver],
           title: 'Flutter Demo',
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
