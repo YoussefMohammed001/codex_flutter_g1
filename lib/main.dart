@@ -1,28 +1,16 @@
-import 'package:codex_flutter_g1/app.dart';
-import 'package:codex_flutter_g1/bloc_observer.dart';
-import 'package:codex_flutter_g1/core/cash/app_preferences.dart';
-import 'package:codex_flutter_g1/core/cash/preference_keys.dart';
-import 'package:codex_flutter_g1/core/di/di.dart';
-import 'package:device_preview/device_preview.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+ main()  {
 
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  //await Firebase.initializeApp();
-  await AppPreferences.init();
-  await setupGetIt();
-  //initFcm();
-  print("user id====> ${AppPreferences.getString(key: PreferenceKeys.userId)}");
-Bloc.observer = MyBlocObserver();
-  runApp(
-    DevicePreview(
-      enabled: true,
-      tools: const [
-        ...DevicePreview.defaultTools,
-      ],
-      builder: (context) => const MyApp(),
-    ),
-  );
-  // runApp(MyApp());
+// Testing in Flutter
+ // ==> Unit testing(test functions of classes)
+ // ==> Widget testing(test functions of widgets)
+ // ==> Integration testing
+ // ==> Bloc Testing
+
+   // Dev Tools
+
+  print(add(4, 5));
+}
+
+int add(int a, int b){
+  return a + b;
 }
